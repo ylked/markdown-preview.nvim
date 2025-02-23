@@ -280,7 +280,8 @@ export default class PreviewPage extends React.Component {
                   }
               }
           }
-      });
+      })
+    }
 
     // Theme already applied
     if (this.state.theme) {
