@@ -37,32 +37,32 @@ Install with [vim-plug](https://github.com/junegunn/vim-plug):
 ```vim
 " If you don't have nodejs and yarn
 " use pre build, add 'vim-plug' to the filetype list so vim-plug can update this plugin
-" see: https://github.com/iamcco/markdown-preview.nvim/issues/50
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" see: https://github.com/ylked/markdown-preview.nvim/issues/50
+Plug 'ylked/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 
 " If you have nodejs
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+Plug 'ylked/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 ```
 
 Or install with [dein](https://github.com/Shougo/dein.vim):
 
 ```vim
-call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
+call dein#add('ylked/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 					\ 'build': 'sh -c "cd app && npx --yes yarn install"' })
 ```
 
 Or with [minpac](https://github.com/k-takata/minpac):
 
 ```vim
-call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
+call minpac#add('ylked/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
 ```
 
 Or with [Vundle](https://github.com/vundlevim/vundle.vim):
 
 Place this in your `.vimrc` or `init.vim`,
 ```vim
-Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'ylked/markdown-preview.nvim'
 ```
 ... then run the following in Vim (to complete the `Plugin` installation):
 ```vim
@@ -77,7 +77,7 @@ Add this in your `init.lua or plugins.lua`
 ```lua
 -- install without yarn or npm
 {
-    "iamcco/markdown-preview.nvim",
+    "ylked/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
@@ -85,7 +85,7 @@ Add this in your `init.lua or plugins.lua`
 
 -- install with yarn or npm
 {
-  "iamcco/markdown-preview.nvim",
+  "ylked/markdown-preview.nvim",
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
   build = "cd app && yarn install",
   init = function()
@@ -102,24 +102,24 @@ Add this in your `init.lua or plugins.lua`
 ```lua
 -- install without yarn or npm
 use({
-    "iamcco/markdown-preview.nvim",
+    "ylked/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
 })
 
-use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+use({ "ylked/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 ```
 
 Or by hand:
 
 ```vim
-use {'iamcco/markdown-preview.nvim'}
+use {'ylked/markdown-preview.nvim'}
 ```
 
 add plugin to the `~/.local/share/nvim/site/pack/packer/start/` directory:
 
 ```vim
 cd ~/.local/share/nvim/site/pack/packer/start/
-git clone https://github.com/iamcco/markdown-preview.nvim.git
+git clone https://github.com/ylked/markdown-preview.nvim.git
 cd markdown-preview.nvim
 npx --yes yarn install
 npx --yes yarn build
