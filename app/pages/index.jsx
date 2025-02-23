@@ -235,7 +235,52 @@ export default class PreviewPage extends React.Component {
           ...DEFAULT_OPTIONS.toc,
           ...toc
         })
-    }
+
+      // add blockquote admonition support (dirty way)
+      this.md.core.ruler.after("block", "admonition", function (state) {
+          for (let i = 0; i < state.tokens.length; i++) {
+              if (state.tokens[i].type === "paragraph_open") {
+                  let contentIndex = i + 1;
+                  if (state.tokens[contentIndex] && state.tokens[contentIndex].type === "inline") {
+                      let content = state.tokens[contentIndex].content;
+                      let match = content.match(/^\[!(TODO|NOTE|WARNING|DANGER|CAUTION|TIP|INFO|QUESTION)\]\s*/);
+                      if (match) {
+                          const type = match[1].toLowerCase();
+
+                          // replace <blockquote> by <div class="admonition">
+                          state.tokens[i - 1].tag = "div";
+                          state.tokens[i - 1].attrSet("class", `admonition ${type}`);
+
+                          // replace </blockquotes> by </div>
+                          for (let j = i; j < state.tokens.length; j++) {
+                              if (state.tokens[j].type === "blockquote_close") {
+                                  state.tokens[j].tag = "div";
+                                  break;
+                              }
+                          }
+
+                          const icons = {
+                              todo: '<i class="fa-solid fa-circle-check"></i>',
+                              note: '<i class="fa-solid fa-circle-info"></i>',
+                              warning: '<i class="fa-solid fa-triangle-exclamation"></i>',
+                              tip: '<i class="fa-solid fa-lightbulb"></i>',
+                              info: '<i class="fa-solid fa-circle-info"></i>',
+                              question: '<i class="fa-solid fa-circle-question"></i>',
+                              danger: '<i class="fa-solid fa-bolt"></i>',
+                              caution: '<i class="fa-solid fa-circle-exclamation"></i>'
+                          };
+
+                          const icon = icons[type] || '<i class="fa-solid fa-circle-info"></i>'; // INFO by default
+
+                          const typeCap =  type.charAt(0).toUpperCase() + type.slice(1);
+
+                      state.tokens[contentIndex].content = `<div class="admonition-title">${icon} <strong>${typeCap}</strong></div>` +
+                      "<p>" + content.replace(/^\[!(TODO|NOTE|WARNING|DANGER|CAUTION|QUESTION|TIP|INFO)\]\s*/, "") + "</p>";
+                      }
+                  }
+              }
+          }
+      });
 
     // Theme already applied
     if (this.state.theme) {
@@ -349,6 +394,7 @@ export default class PreviewPage extends React.Component {
           <script type="text/javascript" src="/_static/flowchart@1.13.0.min.js"></script>
           <script type="text/javascript" src="/_static/viz.js"></script>
           <script type="text/javascript" src="/_static/full.render.js"></script>
+          <script src="https://kit.fontawesome.com/78f6680884.js" crossorigin="anonymous"></script>
         </Head>
         <main data-theme={this.state.theme}>
           <div id="page-ctn" contentEditable={contentEditable ? 'true' : 'false'}>

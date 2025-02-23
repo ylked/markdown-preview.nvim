@@ -18,6 +18,12 @@
     --color-markdown-table-border: #dfe2e5;
     --color-markdown-table-tr-border: #c6cbd1;
     --color-markdown-code-bg: #1b1f230d;
+    
+    --color-blockquote-blue: #0969da;
+    --color-blockquote-green: #28a745;
+    --color-blockquote-red: #d73a49;
+    --color-blockquote-yellow: #ffbc0d;
+    --color-blockquote-purple: #8250df;
 }
 [data-theme="dark"] {
     --color-text-primary: #c9d1d9;
@@ -34,6 +40,12 @@
     --color-markdown-table-border: #3b434b;
     --color-markdown-table-tr-border: #272c32;
     --color-markdown-code-bg: #f0f6fc26;
+
+    --color-blockquote-blue: #58a6ff;
+    --color-blockquote-green: #3fb950;
+    --color-blockquote-red: #f85149;
+    --color-blockquote-yellow: #ffcc00;
+    --color-blockquote-purple: #b392f0;
 }
 
 .markdown-body ol ol,
@@ -309,3 +321,85 @@
   box-sizing: border-box;
   padding: 0;
 }
+
+/* Admonition GitHub-like */
+.admonition {
+    border-left: 5px solid var(--color-border-secondary);
+    background-color: var(--color-bg-tertiary);
+    padding: 10px 16px;
+    margin: 16px 0;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Titre de l'admonition */
+.admonition-title {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 1.1em;
+}
+
+/* Icône FontAwesome */
+.admonition-title i {
+    margin-right: 8px;
+}
+
+/* Couleurs par type en mode clair */
+.admonition.todo { border-left-color: var(--color-blockquote-blue); }
+.admonition.todo .admonition-title { color: var(--color-blockquote-blue); }
+
+.admonition.note { border-left-color: var(--color-blockquote-blue); }
+.admonition.note .admonition-title { color: var(--color-blockquote-blue); }
+
+.admonition.warning { border-left-color: var(--color-blockquote-yellow); }
+.admonition.warning .admonition-title { color: var(--color-blockquote-yellow); }
+
+.admonition.danger { border-left-color: var(--color-blockquote-red); }
+.admonition.danger .admonition-title { color: var(--color-blockquote-red); }
+
+.admonition.tip { border-left-color: var(--color-blockquote-green); }
+.admonition.tip .admonition-title { color: var(--color-blockquote-green); }
+
+.admonition.question { border-left-color: var(--color-blockquote-purple); }
+.admonition.question .admonition-title { color: var(--color-blockquote-purple); }
+
+.admonition.info { border-left-color: var(--color-blockquote-blue); }
+.admonition.info .admonition-title { color: var(--color-blockquote-blue); }
+
+.admonition.caution { border-left-color: var(--color-blockquote-red); }
+.admonition.caution .admonition-title { color: var(--color-blockquote-red); }
+
+/* 🔥 Support du mode sombre */
+[data-theme="dark"] .admonition {
+    background-color: #161b22; /* Légèrement plus clair que la page */
+    border-left-width: 5px;
+}
+
+/* Correction de la bordure en mode sombre */
+/**/
+/* [data-theme="dark"] .admonition.todo { border-left-color: #e3b341; } */
+/* [data-theme="dark"] .admonition.todo .admonition-title { color: #e3b341; } */
+/**/
+/* [data-theme="dark"] .admonition.note { border-left-color: #58a6ff; } */
+/* [data-theme="dark"] .admonition.note .admonition-title { color: #58a6ff; } */
+/**/
+/* [data-theme="dark"] .admonition.warning { border-left-color: #f85149; } */
+/* [data-theme="dark"] .admonition.warning .admonition-title { color: #f85149; } */
+/**/
+/* [data-theme="dark"] .admonition.danger { border-left-color: #ff5555; } */
+/* [data-theme="dark"] .admonition.danger .admonition-title { color: #ff5555; } */
+/**/
+/* [data-theme="dark"] .admonition.tip { border-left-color: #3fb950; } */
+/* [data-theme="dark"] .admonition.tip .admonition-title { color: #3fb950; } */
+/**/
+/* [data-theme="dark"] .admonition.question { border-left-color: #b392f0; } */
+/* [data-theme="dark"] .admonition.question .admonition-title { color: #b392f0; } */
+/**/
+/* [data-theme="dark"] .admonition.info { border-left-color: #58a6ff; } */
+/* [data-theme="dark"] .admonition.info .admonition-title { color: #58a6ff; } */
+/**/
