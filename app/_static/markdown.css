@@ -335,7 +335,6 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Titre de l'admonition */
 .admonition-title {
     font-weight: 600;
     display: flex;
@@ -344,12 +343,10 @@
     font-size: 1.1em;
 }
 
-/* Icône FontAwesome */
 .admonition-title i {
     margin-right: 8px;
 }
 
-/* Couleurs par type en mode clair */
 .admonition.todo { border-left-color: var(--color-blockquote-blue); }
 .admonition.todo .admonition-title { color: var(--color-blockquote-blue); }
 
@@ -374,32 +371,7 @@
 .admonition.caution { border-left-color: var(--color-blockquote-red); }
 .admonition.caution .admonition-title { color: var(--color-blockquote-red); }
 
-/* 🔥 Support du mode sombre */
 [data-theme="dark"] .admonition {
-    background-color: #161b22; /* Légèrement plus clair que la page */
+    background-color: #161b22;
     border-left-width: 5px;
 }
-
-/* Correction de la bordure en mode sombre */
-/**/
-/* [data-theme="dark"] .admonition.todo { border-left-color: #e3b341; } */
-/* [data-theme="dark"] .admonition.todo .admonition-title { color: #e3b341; } */
-/**/
-/* [data-theme="dark"] .admonition.note { border-left-color: #58a6ff; } */
-/* [data-theme="dark"] .admonition.note .admonition-title { color: #58a6ff; } */
-/**/
-/* [data-theme="dark"] .admonition.warning { border-left-color: #f85149; } */
-/* [data-theme="dark"] .admonition.warning .admonition-title { color: #f85149; } */
-/**/
-/* [data-theme="dark"] .admonition.danger { border-left-color: #ff5555; } */
-/* [data-theme="dark"] .admonition.danger .admonition-title { color: #ff5555; } */
-/**/
-/* [data-theme="dark"] .admonition.tip { border-left-color: #3fb950; } */
-/* [data-theme="dark"] .admonition.tip .admonition-title { color: #3fb950; } */
-/**/
-/* [data-theme="dark"] .admonition.question { border-left-color: #b392f0; } */
-/* [data-theme="dark"] .admonition.question .admonition-title { color: #b392f0; } */
-/**/
-/* [data-theme="dark"] .admonition.info { border-left-color: #58a6ff; } */
-/* [data-theme="dark"] .admonition.info .admonition-title { color: #58a6ff; } */
-/**/
